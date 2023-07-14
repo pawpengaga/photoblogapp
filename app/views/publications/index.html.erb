@@ -1,12 +1,12 @@
-<h1>Publications</h1>
+<h1 class="display-3 mb-5 text-center">Karina fotógrafa</h1>
 
 <div id="publications">
-  <% @publications.each do |publication| %>
-    <%= render publication %>
-    <p>
-      <%= link_to "Show this publication", publication %>
-    </p>
+  <% @publications.reverse.each do |publication| %>
+    <div class="mb-5">
+      <%= render publication %>
+      <p>
+        <%= link_to "Ver post", publication, class:"fw-bold" %>
+      </p>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New publication", new_publication_path %>

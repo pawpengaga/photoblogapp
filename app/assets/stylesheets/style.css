@@ -18,6 +18,7 @@ body{
 
 a{
     color: var(--accent);
+    text-decoration: none;
 }
 
 .mylinks{
@@ -41,7 +42,7 @@ a{
 }
 
 .mydummydiv{
-    height: 5rem;
+    height: 3rem;
 }
 
 .mycol{

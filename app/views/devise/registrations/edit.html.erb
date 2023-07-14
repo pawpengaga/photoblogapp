@@ -1,54 +1,82 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 class="display-3 text-center">Editar <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="row d-flex justify-content-center mt-5">
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <div class="col-8 pe-5">
+        <div class="field mb-3">
+          <%= f.label :email, "Correo electrónico", class: "mb-2 fw-bold" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :username, "Nombre de usuario", class: "mb-2 fw-bold" %><br />
+          <%= f.text_field :username, autofocus: true, autocomplete: "username", class:"form-control" %>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :current_password, "Contraseña actual", class: "mb-2 fw-bold" %> <i>(Ingrese su contraseña para confirmar sus cambios)</i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
+        </div>
+        <div class="mt-5">
+          <h3>Cambio de contraseña</h3>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+          <div class="field mb-3">
+            <%= f.label :password, "Nueva contraseña", class: "mb-2 fw-bold" %> <i>(Deje en blanco si no quiere cambiarla))</i><br />
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+            <% if @minimum_password_length %>
+              <br />
+              <em><%= @minimum_password_length %> caracteres mínimo</em>
+            <% end %>
+          </div>
+          <div class="field">
+            <%= f.label :password_confirmation, "Repetir nueva contraseña", class: "mb-2 fw-bold" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+          </div>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="col-4">
+        <% if current_user.avatar.present? %>
+        
+        <h2 class="d-flex align-items-top fw-bold">
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+          Foto de <br> perfil actual
+        </h2>
+        <%= image_tag current_user.avatar, class: "w-50 mb-3 me-3 mt-1" %>
+        <%end%>
+        <div>
+          <%= f.file_field :avatar, multiple: false, class: "form-control" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
-  </div>
+      </div>
+      <div class="actions text-center mb-5 mt-5">
+        <%= f.submit "Actualizar datos", class:"btn mybtn w-50 py-2 mb-3 mt-3" %>
+      </div>
+      <% end %>
+    </div>
 
-  <h3>Nueva foto de perfil</h3>
-  <div>
-    <%= f.label :avatar, style: "display: block" %>
-    <%= f.file_field :avatar, multiple: false, class: "form-control" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
 
-<h3>Cancel my account</h3>
+<%if current_user.role == 'admin' %>
+      <p class="fst-italic text-center">El administrador no puede eliminar su cuenta</p>
+    <%else%>
+    <button class="btn btn-outline-info text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <div class="d-flex"><span>Opciones de eliminación</span> <i class=" ms-1 fa-solid fa-sort-down"></i></div>
+    </button>
+    
+    
+    <div class="collapse mt-3 mb-3 text-dark" id="collapseExample">
+      <div class="card card-body">
+        <h3>Eliminar mi cuenta</h3>
+        <div>Esta acción no puede deshacerse
+          <%= button_to "ELIMINAR CUENTA", registration_path(resource_name), class: "btn mybtn mt-4 fw-bold", data: { confirm: "Estás seguro?", turbo_confirm: "Estás seguro?" }, method: :delete %>
+        </div>
+      </div>
+    </div>
+    <%end%>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+    <%= link_to "Volver", :back , class:"btn mybtn"%>

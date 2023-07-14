@@ -1,38 +1,42 @@
-<h2>Sign up</h2>
+<h1 class="display-3 text-center">Registro</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="row d-flex justify-content-center mt-5">
+  <div class="col-7">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    
+      <div class="field mb-3">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+    
+      <div class="field mb-3">
+        <%= f.label :password, "Ingrese contraseña", class: "mb-2 fw-bold" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      </div>
+    
+      <div class="field mb-3">
+        <%= f.label :password_confirmation, "Confirme su contraseña", class: "mb-2 fw-bold" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
+    
+    
+        <%= f.hidden_field :username, value: "user#{rand(43..988)}" %>
+    
+    
+      <div class="field mb-3">
+        <%= f.label :avatar, "Foto de perfil (Archivo)", style: "display: block", class: "mb-2 fw-bold" %>
+        <%= f.file_field :avatar, multiple: false, class: "form-control" %>
+      </div>
+      <p>Nombre de usuario podrá ser cambiado después, el sitio le asignará uno la primera vez que se registra</p>
+      <div class="actions">
+        <%= f.submit "Registrarse", class: "btn mybtn w-100" %>
+      </div>
+    <% end %>
+    
+    <div class="text-end mt-3"><%= render "devise/shared/links" %></div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-
-    <%= f.hidden_field :username, value: "user#{rand(43..988)}" %>
-
-
-  <div>
-    <%= f.label :avatar, style: "display: block" %>
-    <%= f.file_field :avatar, multiple: false, class: "form-control" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

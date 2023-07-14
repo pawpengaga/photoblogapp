@@ -1,26 +1,18 @@
 <div id="<%= dom_id publication %>">
-  <p>
-    <strong>Title:</strong>
-    <%= publication.title %>
-  </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= publication.description %>
-  </p>
+    <h1><%= publication.title %></h1>
 
-  <p>
-    <strong>User:</strong>
-    <%= publication.user_id %>
-  </p>
-
+  <p class="my-4"><%= publication.description %></p>
   
-
-  <div id="images-section" class="my-5">
+  <div id="images-section" class="mb-5">
     <% publication.images.each do |u| %>
       <%= image_tag u, class:"d-block mb-3" %>
     <%end%>
   </div>
+
+  <p class="fst-italic">
+    Por: <%= publication.user.username %>
+  </p>
 
 
 </div>

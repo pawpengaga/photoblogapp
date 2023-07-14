@@ -3,12 +3,12 @@
 </div>
 
 <% if user_signed_in? %>
-    <div id="user-section" class="py-4">
+    <div id="user-section" class=" pb-3 ms-3 d-flex align-items-center">
         <%= image_tag current_user.avatar, class: "wi-25 rounded-circle" %>
-        <%= current_user.username %>
+        <span class="fs-5 ms-3"><span class="fw-bold"><%= current_user.username %></span> (<%= current_user.role %>)</span>
     </div>
 <%end%>
-<div id="menu-area" class="pb-3">
+<div id="menu-area">
     <ul class="twitter-list p-0">
         <%= link_to "Inicio", root_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
         <% if user_signed_in? %>
@@ -23,8 +23,13 @@
         <%end%>
     </ul>
 </div>
-<%= link_to "Nueva publicación", new_publication_path, class: "btn mybtn w-100 py-3 fs-5 fw-bold text-white shame" %>
-<div class="mt-3">
+<% if user_signed_in? && (current_user.role == 'admin') %>
+<div class="mt-3 ms-3">
+    <p class="fw-bold">Bienvenida, Karina &#128150; &#128247;</p>
+    <%= link_to "Nueva publicación", new_publication_path, class: "btn mybtn w-100 py-3 fs-5 fw-bold text-white mt-3" %>
+</div>
+<%end%>
+<div class="mt-3 ms-3">
 
     <hr>
     <p class="text-end">Erick Rivera - 2023</p>
