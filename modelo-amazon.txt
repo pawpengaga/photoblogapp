@@ -1,0 +1,20 @@
+1. Crear el bucket
+    1.1. Nombrarlo de forma unica
+    1.2 Dejar la región tal como está
+    1.3. Activar el acceso publico, y aceptar las consecuencias
+2. Acceder a IAM
+    2.1 Crear un grupo de usuarios con cualquier nombre (mys3group).
+        2.1.1 Asignar la política de permisos AmazonS3FullAccess
+    2.2 Crear un usuario, puede tener cualquier nombre, no tiene que ser único
+    2.3 Asignar el usuario al grupo creado antes.
+    2.4 Crear el usuario
+    2.5 Hacer clic al usuario creado
+        2.5.1 Ir al panel de credenciales de seguridad
+        2.5.2 Habilitar el acceso a la consola
+            2.5.2.1 El usuario debe crear una nueva contraseña en el siguiente inicio de sesión
+            2.5.2.2 Guardar las claves en un txt dentro del proyecto con gitignore
+        2.5.3 Crear claves de acceso en crear claves de acceso
+            2.5.3.1 Seleccionar servicio de terceros
+            2.5.3.2 Crear nombre generico de etiqueta (clave para usar los buckets de s3)
+            2.5.3.3 Copiar la clave de acceso normal y secreta dentro del mismo documento seguro
+3. Está todo listo

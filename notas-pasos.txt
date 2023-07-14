@@ -1,0 +1,14 @@
+COMMIT
+1. Devise added
+2. Figaro added
+3. Faker added
+--
+3. rails g controller homes index
+4. rails g devise:install
+5. rails g devise user username (userpic)
+6. rails g scaffold publication title description:text user:references (postpic)
+7. rails g model comment content user:references publication:references
+
+8. rails g devise:views
+9. rails g devise:controllers users
+COMMIT
