@@ -14,4 +14,13 @@
     <%= publication.user_id %>
   </p>
 
+  <%= image_tag current_user.avatar, class: "wi-10 rounded-circle" %>
+
+  <div id="images-section" class="my-5">
+    <% publication.images.each do |u| %>
+      <%= image_tag u, class:"d-block mb-3" %>
+    <%end%>
+  </div>
+
+
 </div>

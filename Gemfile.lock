@@ -230,6 +230,7 @@ PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  activestorage (~> 7.0)
   bootsnap
   capybara
   debug

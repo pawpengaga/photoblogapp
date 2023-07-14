@@ -1,5 +1,6 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /publications or /publications.json
   def index
@@ -22,6 +23,7 @@ class PublicationsController < ApplicationController
   # POST /publications or /publications.json
   def create
     @publication = Publication.new(publication_params)
+    @publication.user = current_user
 
     respond_to do |format|
       if @publication.save
@@ -65,6 +67,6 @@ class PublicationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def publication_params
-      params.require(:publication).permit(:title, :description, :user_id)
+      params.require(:publication).permit(:title, :description, :user_id, images: [])
     end
 end

@@ -31,6 +31,17 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+  </div>
+
+  <h3>Nueva foto de perfil</h3>
+  <div>
+    <%= f.label :avatar, style: "display: block" %>
+    <%= f.file_field :avatar, multiple: false, class: "form-control" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

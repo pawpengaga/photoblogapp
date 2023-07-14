@@ -12,12 +12,16 @@
 body{
     font-family: 'Open Sans', sans-serif;
     /* font-family: 'Belanosima', sans-serif; */
-    background-color: var(--dev);
+    background-color: var(--dark);
     color: var(--classic);
 }
 
 a{
     color: var(--accent);
+}
+
+.mylinks{
+    border-radius: 0.25rem;
 }
 
 .mylinks:hover{

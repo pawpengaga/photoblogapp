@@ -15,9 +15,16 @@ COMMIT
 
 1. rails db:create db:migrate
 
+2. rails g migration AddAvatarToUsers avatar:string
 
 
 ---------------------
 Pasos informales a tener en cuenta
 - No preocuparse por el diseño todavía, plagiar el del desafio de twitter pero blanco
 - Seguir el tutorial de chatgpt de como añadir foto por defecto
+
+
+-----------------------GEDO
+
+bundle add activestorage
+rails active_storage:install
