@@ -78,3 +78,5 @@ gem "figaro", "~> 1.2"
 gem "faker", "~> 3.2"
 
 gem "activestorage", "~> 7.0"
+
+gem "aws-sdk-s3", "~> 1.130"
