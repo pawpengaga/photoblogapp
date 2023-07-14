@@ -1,0 +1,19 @@
+<ul class="twitter-list mt-5 p-0">
+    <%= link_to "Inicio", root_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
+    <% if user_signed_in? %>
+    <%= link_to edit_user_registration_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" do%>
+    <span>Mi cuenta</span>
+    <%end%>
+    <!--aqui pudo haber ido una sessión de "mis comentarios"-->
+    <%= link_to "Salir", destroy_user_session_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
+    <%else%>
+    <%= link_to "Entrar", new_user_session_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
+    <%= link_to "Registrarse", new_user_registration_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
+    <%end%>    
+</ul>
+<%= link_to "Nueva publicación", new_publication_path, class: "btn mybtn w-100 py-3 fs-5 fw-bold text-white shame" %>
+<div class="mt-3">
+    <hr>
+    <p>Erick Rivera - 2023</p>
+
+</div>

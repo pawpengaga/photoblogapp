@@ -12,3 +12,12 @@ COMMIT
 8. rails g devise:views
 9. rails g devise:controllers users
 COMMIT
+
+1. rails db:create db:migrate
+
+
+
+---------------------
+Pasos informales a tener en cuenta
+- No preocuparse por el diseño todavía, plagiar el del desafio de twitter pero blanco
+- Seguir el tutorial de chatgpt de como añadir foto por defecto

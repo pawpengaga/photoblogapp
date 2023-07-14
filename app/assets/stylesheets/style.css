@@ -1,0 +1,57 @@
+:root{
+    --accent: rgb(6, 200, 214);
+    --seccon: rgb(6, 177, 177);
+
+    --classic: rgb(255, 255, 255);
+    --clear: rgb(21, 32, 43);
+    --dark: rgb(0, 0, 0);
+
+    --dev: rgb(146, 69, 69);
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Belanosima', sans-serif; */
+    background-color: var(--dev);
+    color: var(--classic);
+}
+
+a{
+    color: var(--accent);
+}
+
+.mylinks:hover{
+    background-color: var(--accent) !important;
+}
+
+#fake-container{
+    padding-left: 12em;
+    padding-right: 12em;
+}
+
+.myalerts{
+    position: fixed;
+    top: 0;
+}
+
+.mydummydiv{
+    height: 5rem;
+}
+
+.mycol{
+    position: sticky;
+    top: 0;
+    height: 100%;
+}
+
+.mybtn{
+    background-color: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.mybtn:hover{
+    background-color: var(--seccon);
+    color: white;
+    border-color: var(--seccon);
+}
