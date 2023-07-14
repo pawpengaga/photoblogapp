@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one_attached :avatar, dependent: :destroy #Definido por mi para el experimiento, debe tener una pura imagen. Especificar tambien en el formulario
 
   after_create :attach_default_avatar
+  before_destroy :purge_avatar
 
   private
 
@@ -16,5 +17,9 @@ class User < ApplicationRecord
     unless avatar.attached?
       avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default-avatar.jpg')), filename: 'default-avatar.jpg', content_type: 'image/jpg')
     end
+  end
+
+  def purge_avatar
+    avatar.purge if avatar.attached?
   end
 end

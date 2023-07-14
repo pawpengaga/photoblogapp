@@ -1,0 +1,18 @@
+<div id="<%= dom_id comment %>">
+    <div class="row">
+
+        <div class="col-1 text-center"><%=image_tag comment.user.avatar, class: "mypfp rounded-circle w-100" %></div>
+
+        <div class="ms-1 col-10">
+          <span class="fw-bold"><%= comment.user.username%></span> <span class="fst-italic">Created <%= distance_of_time_in_words(comment.created_at, Time.now, include_seconds: true)%> ago...</span> <br>
+          <%= comment.content %>
+          <% if user_signed_in?  %> <span>&& (current_user.role == 'admin')</span>
+            <p class="mt-1">
+              <%= button_to publication_comment_path(publication_id: comment.publication_id, id: comment.id), method: :delete, class: "btn mybtn" do %>
+              Eliminar comentario
+            <% end %>        
+            </p>
+          <%end%>
+        </div>
+      </div>
+</div>

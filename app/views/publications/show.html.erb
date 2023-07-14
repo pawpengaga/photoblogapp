@@ -1,6 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @publication %>
+
+<%= render 'comments/form' %>
+
+<div class="my-4">
+  <% @comments.reverse.each do |comment| %>
+    <div class="mb-3"><%= render partial: "comments/comment", locals: { comment: comment } %></div>
+  <% end %>
+</div>
+
 <div>
   <%= link_to "Back to posts", publications_path %>
   <% if user_signed_in? %>
