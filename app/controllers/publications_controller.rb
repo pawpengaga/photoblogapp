@@ -2,6 +2,10 @@ class PublicationsController < ApplicationController
   before_action :set_publication, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
 
+  before_action only: [:new, :create, :edit, :update, :destroy] do
+    authorize_request(["admin"])
+  end
+
   # GET /publications or /publications.json
   def index
     @publications = Publication.all

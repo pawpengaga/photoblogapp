@@ -35,7 +35,9 @@ a{
 
 .myalerts{
     position: fixed;
-    top: 0;
+    bottom: 0;
+    font-weight: bold;
+    color: var(--accent) !important;
 }
 
 .mydummydiv{

@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy #Definido por mi para el experimiento, debe tener una pura imagen. Especificar tambien en el formulario
 
+  enum :role, [:user, :admin]
+
   after_create :attach_default_avatar
   before_destroy :purge_avatar
 

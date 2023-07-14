@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
-  #before_action only: [:edit, :update, :destroy] do
-  #    authorize_request(["admin"])
-  #  end
+  before_action only: [:edit, :update, :destroy] do
+      authorize_request(["admin"])
+    end
     
   def index
       @user = User.find(params[:user_id])
